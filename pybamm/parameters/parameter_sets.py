@@ -107,6 +107,11 @@ Lithium-ion parameter sets
          Popov. Development of first principles capacity fade model for li-ion cells.
          Journal of the Electrochemical Society, 151(2):A196, 2004.
          doi:10.1149/1.1634273.
+    * Siegel2022 :
+       - Peyman Mohtat, Suhak Lee, Valentin Sulzer, Jason B. Siegel, and Anna G.
+         Stefanopoulou. Differential Expansion and Voltage Model for Li-ion Batteries at
+         Practical Charging Rates. Journal of The Electrochemical Society,
+         167(11):110561, 2020. doi:10.1149/1945-7111/aba5d1.
     * Xu2019 :
        - Shanshan Xu, Kuan-Hung Chen, Neil P Dasgupta, Jason B Siegel, and Anna G
          Stefanopoulou. Evolution of dead lithium growth in lithium metal batteries:
