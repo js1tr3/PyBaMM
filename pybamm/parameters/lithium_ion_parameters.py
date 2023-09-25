@@ -824,7 +824,7 @@ class ParticleLithiumIonParameters(BaseParameters):
             inputs,
         )
 
-    def j0_dimensional(self, c_e, c_s_surf, T, N_nick):
+    def j0_dimensional(self, c_e, c_s_surf, T):
         """Dimensional exchange-current density [A.m-2]"""
         inputs = {
             "Electrolyte concentration [mol.m-3]": c_e,
@@ -833,8 +833,7 @@ class ParticleLithiumIonParameters(BaseParameters):
             "surface concentration [mol.m-3]": self.c_max,
             "Temperature [K]": T,
             f"{self.phase_prefactor}Maximum {self.domain.lower()} particle "
-            "surface concentration [mol.m-3]": self.c_max,
-            f"{self.domain} dissolution nickel intercalation coefficient": N_nick,            
+            "surface concentration [mol.m-3]": self.c_max,           
             
         }
         return pybamm.FunctionParameter(
@@ -906,7 +905,7 @@ class ParticleLithiumIonParameters(BaseParameters):
 
         # Reference exchange-current density
         self.j0_ref_dimensional = (
-            self.j0_dimensional(main.c_e_typ, self.c_max / 2, main.T_ref, 0) * 2
+            self.j0_dimensional(main.c_e_typ, self.c_max / 2, main.T_ref) * 2
         )
 
         # Reaction timescales
@@ -1052,7 +1051,7 @@ class ParticleLithiumIonParameters(BaseParameters):
         T_dim = self.main_param.Delta_T * T + self.main_param.T_ref
         return self.D_dimensional(sto, T_dim) / self.D_typ_dim
 
-    def j0(self, c_e, c_s_surf, T, N_nick):
+    def j0(self, c_e, c_s_surf, T):
         """Dimensionless exchange-current density"""
         tol = pybamm.settings.tolerances["j0__c_e"]
         c_e = pybamm.maximum(c_e, tol)
@@ -1062,7 +1061,7 @@ class ParticleLithiumIonParameters(BaseParameters):
         c_s_surf_dim = c_s_surf * self.c_max
         T_dim = self.main_param.Delta_T * T + self.main_param.T_ref
 
-        return self.j0_dimensional(c_e_dim, c_s_surf_dim, T_dim,N_nick) / self.j_scale
+        return self.j0_dimensional(c_e_dim, c_s_surf_dim, T_dim) / self.j_scale
 
     def U(self, c_s, T, lithiation=None):
         """Dimensionless open-circuit potential in the electrode"""
