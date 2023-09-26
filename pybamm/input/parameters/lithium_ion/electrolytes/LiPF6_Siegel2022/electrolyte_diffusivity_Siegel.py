@@ -27,8 +27,14 @@ def electrolyte_diffusivity_Siegel(c_e, T):
         Electrolyte diffusivity
     """
 
-    D_c_e = 5.35 * 10 ** (-10)
-    E_D_e = 37040
-    arrhenius = exp(E_D_e / constants.R * (1 / 298.15 - 1 / T))
-
-    return D_c_e * arrhenius
+    C = c_e/1000.0
+    D00 = -487.2
+    D01 = -28530000
+    Tg0 = 58320
+    Tg1 = 50.31
+    D10 = -52.79
+    D11 = -3061000
+    
+    De = (1e-14)*10**((D00+D01/(T-((Tg0+C*Tg1))))+(D10+D11/(T-((Tg0+C*Tg1))))*C)
+    
+    return De

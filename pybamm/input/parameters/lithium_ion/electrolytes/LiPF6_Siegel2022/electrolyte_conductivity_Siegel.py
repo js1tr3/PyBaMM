@@ -26,8 +26,16 @@ def electrolyte_conductivity_Siegel(c_e, T):
         Electrolyte conductivity
     """
 
-    sigma_e = 1.3
-    E_k_e = 34700
-    arrhenius = exp(E_k_e / constants.R * (1 / 298.15 - 1 / T))
+    C = c_e/1000.0
+    k_Kmax = 3.58e-7
+    k_Cmax = 4.84e-6
+    k_a = 0.4793
+    k_P2 = -0.3299
+    k_P1 = 2.22e-14
+    k_Ea = 13490
+    k_Rg = 8.314
+    k_T0 = 162.5
 
-    return sigma_e * arrhenius
+    Ke = 100*k_Kmax*((C/k_Cmax)**k_a)*exp(k_P2*((C-k_Cmax)**2)-k_P1*((C-k_Cmax)/k_Cmax))*exp((-k_Ea/k_Rg)*(1/T-1/k_T0))
+
+    return Ke
