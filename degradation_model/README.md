@@ -22,7 +22,7 @@ cd degradation_model
 ```
 ## Data
 The model requires cycling data, RPT data, resistance and eSOH data. These data files not included in this repo due to upload size limitations. Please download from this [Google Drive Folder](https://drive.google.com/drive/folders/16uwOXhK_kvs6xNQBIiVQT5VzPDkkNnov?usp=sharing) and paste the files in the empty folder named `data` provided. Ensure to paste the data in the corresponding subfolders of `cycling`,`esoh`,`ocv` and `resistance`.
-## Running the Model
+## Running the degradation Model
 - Run [run_model.ipynb](../degradation_model/run_model.ipynb) notebook to simulate aging for all cells at room temperature
   - Includes resistance simulations
   - Includes voltage and expansion simulations
@@ -32,3 +32,7 @@ The model requires cycling data, RPT data, resistance and eSOH data. These data 
 ## Parameters
 - Details regarding the location of parameters and how to update them are given in [parameters.md](./parameters.md)
 - Running C/3 and C/20 cycles with the new parameter set is given in [run_cycles.ipynb](./run_cycles.ipynb)
+
+## Examples
+- Run [run_current_profile.ipynb](../degradation_model/run_current_profile.ipynb) shows how to run the model using a current profile from data
+- Run [initialize_model.ipynb](../degradation_model/initialize_model.ipynb) shows how to initialize the model with electrode stoichiometries and capacities.
