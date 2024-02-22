@@ -725,6 +725,25 @@ def plotc2(all_sumvars_dict1,all_sumvars_dict2,esoh_data,leg1="sim1",leg2="sim2"
     fig.tight_layout()
     return fig
 
+def plotc3(all_sumvars_dict1,all_sumvars_dict2,all_sumvars_dict3,esoh_data,leg1="sim1",leg2="sim2",leg3="sim3"):
+    esoh_vars = ["x_100", "y_0", "C_n", "C_p", "Capacity [A.h]", "Loss of lithium inventory [%]"]
+    fig, axes = plt.subplots(3,2,figsize=(7,7))
+    for k, name in enumerate(esoh_vars):
+        ax = axes.flat[k]
+        ax.plot(all_sumvars_dict1["Cycle number"],all_sumvars_dict1[name],"b--")
+        ax.plot(all_sumvars_dict2["Cycle number"],all_sumvars_dict2[name],"r--")
+        ax.plot(all_sumvars_dict3["Cycle number"],all_sumvars_dict3[name],"g--")
+        ax.plot(esoh_data["N"],esoh_data[name],"kx")
+        ax.set_title(split_long_string(name))
+        # if k ==2 or k==3:
+        #     ax.set_ylim([3,6.2])
+        if k>3:
+            ax.set_xlabel("Cycle number")
+    fig.legend([leg1, leg2, leg3 , "Data"], 
+           loc="lower center",bbox_to_anchor=[0.5,-0.1], ncol=4, fontsize=11)
+    fig.tight_layout()
+    return fig
+
 def plotcomp(all_sumvars_dict0,all_sumvars_dict1):
     esoh_vars = ["x_100", "y_0", "C_n", "C_p", "Capacity [A.h]", "Loss of lithium inventory [%]"]
     fig, axes = plt.subplots(3,2,figsize=(7,7))
@@ -839,6 +858,10 @@ def load_data(cell,eSOH_DIR,oCV_DIR):
     cycles=cycles-1
     cycles[0]=cycles[0]+1
     dfe['N_mod'] = cycles
+    cycles = np.array(dfe_0['N'].astype('int'))
+    cycles=cycles-1
+    cycles[0]=cycles[0]+1
+    dfe_0['N_mod'] = cycles
     N =dfe.N.unique()
     N_0 = dfe_0.N.unique()
     # print("Cycle Numbers:")
