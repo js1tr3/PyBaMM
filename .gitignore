@@ -46,6 +46,7 @@ input/*
 
 # keep images required by notebooks
 !examples/notebooks/Creating%20Models/SEI.png
+!tuning_summary.png
 
 # simulation outputs
 out/
