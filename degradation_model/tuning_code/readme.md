@@ -57,7 +57,7 @@ $$Y_\mathrm{cyc} = \left[C, n_\mathrm{Li},C_n,C_p\right]^T$$
 1. eSOH parameters $[x_0,x_{100},y_0,y_{100},C_n,C_p,C,n_{Li}]$ at RPTs for cycling aging cells at multiple C-rates
 2. Output of step 1 i.e. parameters tuned in step 1.
 ### Output of Tuning:
-$$P_\mathrm{cyc} = \left[\beta^-_{\mathrm{LAM},1},\beta^-_{\mathrm{LAM},2},\beta^+_{\mathrm{LAM},1},\beta^+_{\mathrm{LAM},2},m_{\mathrm{LAM}},k_\mathrm{pl}\right]$$
+$$P_\mathrm{cyc} = \left[\beta^{-}_\mathrm{LAM,1},\beta^{-}_\mathrm{LAM,2},\beta^{+}_\mathrm{LAM,1},\beta^{+}_\mathrm{LAM,2},m_\mathrm{LAM},k_\mathrm{pl}\right]$$
 
 ### Code for executing step:
 To perform step 2, please run this [notebook](./step_2_cycling.ipynb)
@@ -93,8 +93,9 @@ To perform step 3, please run this [notebook](./step_3_resistance.ipynb)
 
 
 ## Step 4
-1. In the final step we tune the scaling factors of the expansion growth model:
+1. In the final step we tune the scaling factors of the expansion growth model:  
 $$P_\mathrm{expansion} = \left[b_\mathrm{SEI}, b_\mathrm{pl}, b^-_\mathrm{in},b^+_\mathrm{in}\right]$$
+
 2. The parameters $P_{expansion}$ were tuned based on the expansion data extracted from the RPTs of the cycling cells at charge-discharges rates of C/5-C/5%–100%DOD, 1.5C-1.5C-100%DOD, and C/5-1.5C-100%DOD.
 3. A least squares estimation algorithm was used to find scaling factor values.
 
@@ -104,7 +105,7 @@ $$P_\mathrm{expansion} = \left[b_\mathrm{SEI}, b_\mathrm{pl}, b^-_\mathrm{in},b^
 3. Expansion data at RPTs for the chose cells
 
 ### Output of Tuning:
-$$P_\mathrm{expansion} = \left[b_\SEI, b_\mathrm{pl}, b^-_\mathrm{in},b^+_\mathrm{in}\right]$$
+$$P_\mathrm{expansion} = \left[b_\mathrm{SEI}, b_\mathrm{pl}, b^-_\mathrm{in}, b^+_\mathrm{in}\right]$$
 
 ### Code for executing step:
 To perform step 4, please run this [notebook](./step_4_expansion.ipynb)
