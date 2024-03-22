@@ -57,7 +57,7 @@ $$Y_\mathrm{cyc} = \left[C, n_\mathrm{Li},C_n,C_p\right]^T$$
 1. eSOH parameters $[x_0,x_{100},y_0,y_{100},C_n,C_p,C,n_{Li}]$ at RPTs for cycling aging cells at multiple C-rates
 2. Output of step 1 i.e. parameters tuned in step 1.
 ### Output of Tuning:
-$$P_\mathrm{cyc} = \left[\beta^{-}_\mathrm{LAM,1},\beta^{-}_\mathrm{LAM,2},\beta^{+}_\mathrm{LAM,1},\beta^{+}_\mathrm{LAM,2},m_\mathrm{LAM},k_\mathrm{pl}\right]$$
+$$P_\mathrm{cyc} = \left[\beta_\mathrm{LAM,1},\beta_\mathrm{LAM,2},\beta_\mathrm{LAM,1},\beta_\mathrm{LAM,2},m_\mathrm{LAM},k_\mathrm{pl}\right]$$
 
 ### Code for executing step:
 To perform step 2, please run this [notebook](./step_2_cycling.ipynb)
