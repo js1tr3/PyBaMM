@@ -12,6 +12,8 @@ from scipy.signal import find_peaks
 from scipy import interpolate
 from stopit import threading_timeoutable as timeoutable
 
+pd.options.mode.chained_assignment = None
+
 def set_rc_params(rcParams):
 
     rcParams["lines.markersize"] = 5
@@ -852,8 +854,22 @@ def load_data(cell,eSOH_DIR,oCV_DIR):
         dfe = dfe.reset_index(drop=True)
         dfe_0 = dfe_0.drop(dfe_0.index[-1])
         dfe_0 = dfe_0.reset_index(drop=True)
+    if cell_no=='12':
+        dfe = dfe.drop(dfe.index[0])
+        dfe = dfe.reset_index(drop=True)
+        dfe_0 = dfe_0.drop(dfe_0.index[0])
+        dfe_0 = dfe_0.reset_index(drop=True)
+        dfo_0 = dfo_0.drop(dfo_0.loc[dfo_0["N"] == 0].index)
+        dfo_0 = dfo_0.reset_index(drop=True)
+        # N00 = dfo_0.N.unique()
+        # for n in N00:
+        #     dfo_0.loc[dfo_0["N"]==n,"N"] = n- N00[0]
+
     dfe['N']=dfe['N']-dfe['N'][0]
     dfe['Ah_th']=dfe['Ah_th']-dfe['Ah_th'][0]
+    dfe_0['N']=dfe_0['N']-dfe_0['N'][0]
+    dfe_0['Ah_th']=dfe_0['Ah_th']-dfe_0['Ah_th'][0]
+    dfo_0['N']=dfo_0['N']-dfo_0['N'][0]
     cycles = np.array(dfe['N'].astype('int'))
     cycles=cycles-1
     cycles[0]=cycles[0]+1
