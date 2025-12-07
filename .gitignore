@@ -11,6 +11,8 @@ gmproj/extra/
 *.DS_Store
 *.mat
 *.csv
+_version.py
+*.python-version
 
 # don't ignore important .txt and .csv files
 !requirements*
