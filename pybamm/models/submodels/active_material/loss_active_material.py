@@ -107,6 +107,11 @@ class LossActiveMaterial(BaseModel):
             # j_stress_LAM = (
             #     -beta_LAM*(abs(stress_min) / stress_critical) ** m_LAM + beta_LAM2*(abs(stress_max) / stress_critical) ** m_LAM
             # )
+            # Old Mechanical Damage
+            j_stress_LAM = (
+                -beta_LAM * (abs(stress_h_surf - stress_h_surf_min) / stress_critical) ** m_LAM
+            )
+            # New Mechanical Damage
             j_stress_LAM = (
                 -beta_LAM*(abs(stress_min) / stress_critical) + beta_LAM2*(abs(stress_max) / stress_critical)
             )

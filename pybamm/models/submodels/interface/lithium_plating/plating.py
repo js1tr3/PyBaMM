@@ -77,11 +77,13 @@ class Plating(BasePlating):
         # NEW: transfer coefficients can be set by the user
         alpha_stripping = self.param.alpha_stripping
         alpha_plating = self.param.alpha_plating
-        # j0_stripping = param.j0_stripping(c_e_n, c_plated_Li, T)
-        # j0_stripping = I_app*param.j0_stripping(c_e_n, c_plated_Li, T)
+        # Old Stripping
+        j0_stripping = param.j0_stripping(c_e_n, c_plated_Li, T)
+        # New Stripping
         j0_stripping = (c_ss_n-c_save_n)*param.j0_stripping(c_e_n, c_plated_Li, T)
-        # j0_plating = param.j0_plating(c_e_n, c_plated_Li, T)
-        # j0_plating = I_app*param.j0_plating(c_e_n, c_plated_Li, T)
+        # Old Plating
+        j0_plating = param.j0_plating(c_e_n, c_plated_Li, T)
+        # New Plating
         j0_plating = ((c_ss_n-c_save_n))*param.j0_plating(c_e_n, c_plated_Li, T)
         # phi_ref is part of the de-dimensionalization used in PyBaMM
         phi_ref = param.n.U_ref / param.potential_scale
